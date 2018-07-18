@@ -2,13 +2,17 @@
 
 /* eslint-disable no-param-reassign */
 
-module.exports.hello = function (context) {
-  context.log('JavaScript HTTP trigger function processed a request.');
+module.exports.store = function (context, req) {
+  context.log('request body: ', req.body);
 
-  context.res = {
-    // status: 200, /* Defaults to 200 */
-    body: 'Go Serverless v1.x! Your function executed successfully!',
+  const res = {
+    headers:{
+      'content-type':'application/json',
+    },
+    body: {
+      'message':'success',
+    }
   };
 
-  context.done();
+  context.done(null, res);
 };

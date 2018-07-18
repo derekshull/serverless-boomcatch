@@ -1,16 +1,3 @@
-# Welcome to Serverless!
-#
-# This file is the main config file for your service.
-# It's very minimal at this point and uses default values.
-# You can always add more config options for more control.
-# We've included some commented out config examples here.
-# Just uncomment any of them to get that config option.
-#
-# For full config options, check the docs:
-#    docs.serverless.com
-#
-# Happy Coding!
-
 service: serverless-boomcatch
 
 # You can pin your service to only deploy with a specific Serverless version
@@ -19,39 +6,28 @@ service: serverless-boomcatch
 
 provider:
   name: azure
-  location: West US
+  location: East US
 
 plugins:
   - serverless-azure-functions
 
 # you can add packaging information here
-#package:
-#  include:
-#    - include-me.js
-#    - include-me-dir/**
-#  exclude:
-#    - exclude-me.js
-#    - exclude-me-dir/**
+package:
+  exclude:
+    - node_modules/**
+    - .gitignore
+    - package.json
+    - .git/**
 
 functions:
-  hello:
-    handler: handler.hello
+  store:
+    handler: handler.store
     events:
       - http: true
         x-azure-settings:
-          authLevel : anonymous
-      - http: true
-        x-azure-settings:
-          direction: out
-          name: res
-
-# The following are a few examples of other events you can configure:
-#
-# events:
-#   - queue: YourQueueName
-#     x-azure-settings:
-#       connection : StorageAppSettingName
-#   - blob:
-#     x-azure-settings:
-#       name: bindingName
-#       direction: in
+          name: req
+          methods:
+            - GET
+            - POST
+          route: store
+          authLevel: anonymous

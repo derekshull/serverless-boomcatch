@@ -1,0 +1,23 @@
+{
+    "disabled": false,
+    "bindings": [
+        {
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req",
+            "route": "store",
+            "authLevel": "anonymous",
+            "methods": [
+                "GET",
+                "POST"
+            ]
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "$return"
+        }
+    ],
+    "entryPoint": "store",
+    "scriptFile": "handler.js"
+}
