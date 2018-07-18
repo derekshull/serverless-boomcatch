@@ -4,11 +4,6 @@ service: serverless-boomcatch
 # Check out our docs for more details
 # frameworkVersion: "=X.X.X" 
 
-custom:
-  AZURE_STORAGE_ACCOUNT: STORAGE-ACCOUNT-HERE
-  AZURE_STORAGE_ACCESS_KEY: ACCESS-KEY-HERE
-  AZURE_STORAGE_CONNECTION_STRING: CONNECTION-STRING-HERE
-
 provider:
   name: azure
   location: East US
