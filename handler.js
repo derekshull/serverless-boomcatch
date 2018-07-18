@@ -1,5 +1,6 @@
 'use strict';
 var azure = require('azure-storage');
+var azureCreds = require('./azure-creds.json');
 
 module.exports = {
   store: function (context, req) {
@@ -24,6 +25,7 @@ module.exports = {
       }
     };
 
+    process.env.AZURE_STORAGE_CONNECTION_STRING = azureCreds.AZURE_STORAGE_CONNECTION_STRING;
     var retryOperations = new azure.ExponentialRetryPolicyFilter();
     var queueSvc = azure.createQueueService().withFilter(retryOperations);
     queueSvc.createQueueIfNotExists('beaconprocessingqueue', function(createQueueError, createQueueResults, createQueueResponse){

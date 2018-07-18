@@ -4,4 +4,4 @@ jspm_packages
 
 # Serverless directories
 .serverless
-azure-creds.yml
+azure-creds.json
