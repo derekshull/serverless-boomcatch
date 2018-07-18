@@ -14,7 +14,6 @@ plugins:
 # you can add packaging information here
 package:
   exclude:
-    - node_modules/**
     - .gitignore
     - package.json
     - .git/**
