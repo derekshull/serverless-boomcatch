@@ -1,0 +1,37 @@
+service: serverless-boomcatch
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=X.X.X" 
+
+custom:
+  AZURE_STORAGE_ACCOUNT: STORAGE-ACCOUNT-HERE
+  AZURE_STORAGE_ACCESS_KEY: ACCESS-KEY-HERE
+  AZURE_STORAGE_CONNECTION_STRING: CONNECTION-STRING-HERE
+
+provider:
+  name: azure
+  location: East US
+
+plugins:
+  - serverless-azure-functions
+
+# you can add packaging information here
+package:
+  exclude:
+    - node_modules/**
+    - .gitignore
+    - .git/**
+
+functions:
+  store:
+    handler: handler.store
+    events:
+      - http: true
+        x-azure-settings:
+          name: req
+          methods:
+            - GET
+            - POST
+          route: store
+          authLevel: anonymous
