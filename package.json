@@ -11,6 +11,8 @@
     "serverless-azure-functions": "*"
   },
   "dependencies": {
-    "azure-storage": "^2.10.0"
+    "azure-storage": "^2.10.0",
+    "mysql": "^2.16.0",
+    "qs": "^6.5.2"
   }
 }

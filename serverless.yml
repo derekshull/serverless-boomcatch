@@ -30,3 +30,10 @@ functions:
             - POST
           route: store
           authLevel: anonymous
+  process:
+    handler: handler.process
+    events:
+      - queue: beaconprocessingqueue
+        x-azure-settings:
+          name: item
+          connection: AZURE_STORAGE_CONNECTION_STRING
